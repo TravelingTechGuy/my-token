@@ -6,7 +6,6 @@ contract('MyToken', accounts => {
     let instance;
 
     beforeEach(async () => {
-      // instance = await MyToken.new(_name, _symbol);
       instance = await MyToken.deployed();
     });
 
@@ -24,6 +23,11 @@ contract('MyToken', accounts => {
       const decimals = await instance.decimals();
       assert.equal(decimals, 18);
     });
+
+    it('has total supply of 10000', async () => {
+      const totalSupply = instance.totalSupply();
+      assert(totalSupply, 10000);
+    })
   })
 
 })
